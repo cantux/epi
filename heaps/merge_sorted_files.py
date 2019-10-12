@@ -23,7 +23,7 @@ def test():
     files.append(range(6)[::3])
     files.append(range(6)[1::3])
     files.append(range(6)[2::3])
-    assert merge(files) == sorted(range(6))
+    assert merge(files) == range(6)
 
 if __name__ == "__main__":
   test()

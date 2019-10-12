@@ -16,7 +16,6 @@ def search_shifted(lst, ii):
     ## if mid is at 2 ii is lower business as usual
     ## if mid is at 3 ii is larger but its not really
 
-    # how to recover if we are at a stage where mid landed on one of these situations?
     lo, hi = 0, len(lst) - 1 
     while lo <= hi:
         mid = (lo + hi) // 2
