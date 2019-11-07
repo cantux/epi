@@ -11,13 +11,14 @@ def fnc(text):
         for t_p in range(len(text)): 
             curr = text[t_p]
             if curr == prev: # do not add repeated chars if they are consecutive
-                continue    
+                continue
+            prev = curr
             curr_str += curr
             perms(curr_ptr + 1, curr_str)
             curr_str = curr_str[:-1]
 
     perms()
-    print res        
+    print sorted(res)
     return None
 
 def test(): 
