@@ -4,7 +4,7 @@ def adv(arr):
     while i < furthest_reach and furthest_reach < last:
         furthest_reach = max(furthest_reach, a[i] + i)
         i += 1
-    return furthest_reach >= last_index
+    return furthest_reach >= last
 
 def test():
     assert adv([1])

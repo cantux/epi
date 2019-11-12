@@ -50,6 +50,7 @@ class Graph:
                     n += 1
                     queue.append(to_)
         return n == numCourses
+
 def test():
     g = Graph()
     g.addEdge("a", "b")

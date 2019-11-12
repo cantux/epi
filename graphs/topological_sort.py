@@ -37,7 +37,6 @@ def detect_cycle(g):
 
 
 def test():
-#     Node = namedtuple("node", 'edge weight')
     vew = [("s", "a", 1), 
             ("s", "b", 2), 
             ("a", "c", 5), 
