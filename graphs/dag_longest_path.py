@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-from collections import namedtuple
-
+import sys
 def t_sort(g):
     ret = []
     def dfs(s):
@@ -35,21 +34,36 @@ def detect_cycle(g):
                 return True
         return False
 
+def short(g, s, t):
+# keep a dict of current shortest paths
+# keep relaxing neighbors with dfs
+
+    top = t_sort(g)
+
+    slice_point = -1
+    for i, v in enumerate(top):
+        if v == s:
+            slice_point = i
+
+    top = top[slice_point:]
+    local_sp = {t: sys.maxint for t in top}
+    top.pop()
+    local_sp[s] = 0
+
+    def relax(u, v):
+        local_sp[v] = min(local_sp[v], local_sp[u] + g[u][v])
+
+    print top
+    for u in top:
+        for v in g[u].keys():
+            relax(u, v)
+
+    return local_sp[t]
+
+def fnc():
+    return None
 
 def test():
-    vew = [("s", "a", 1), 
-            ("s", "b", 2), 
-            ("a", "c", 5), 
-            ("a", "b", 3), 
-            ("b", "a", 1), 
-            ("a", "e", 2), 
-            ("c", "e", 3),
-            ("e", "f", 4),
-            ("e", "d", 1),
-            ("d", "c", 2),
-            ("b", "d", 1),
-            ("d", "f", 1),
-            ]
     dag = [("x", "s", 5), 
             ("x", "a", 3),
             ("s", "a", 2), 
@@ -61,16 +75,16 @@ def test():
             ("b", "c", -1),
             ("c", "d", -2),
             ]
-
+    
     g = {}
     for d in dag:
         if d[0] not in g:
-            g[d[0]] = []
-        g[d[0]].append((d[1], d[2]))
+            g[d[0]] = {}
+        g[d[0]].update({d[1]: d[2]})
 
-#     print g
-    print "cylce: ", detect_cycle(g)
-    print t_sort(g)
+    print "cycle: ", detect_cycle(g)
+    print short(g, "s", "d")
+
 
 if __name__ == "__main__":
     test()
