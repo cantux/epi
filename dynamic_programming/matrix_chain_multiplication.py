@@ -11,7 +11,6 @@ def fnc(matrices):
     
     print p
     dp = [[0 for _ in xrange(num_matrices)] for _ in xrange(num_matrices)]
-    print dp
     for i in range(1, num_matrices):
         dp[i][i] = 0
     print "dp: ", dp

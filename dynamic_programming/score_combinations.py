@@ -1,21 +1,22 @@
 #!/usr/bin/env python
 
 def combinations(score):
-    dp = [0] * score
-    dp[2] = 1
-    dp[3] = 1
-    dp[4] = 1
-    dp[5] = 1
-    dp[6] = 2
-    dp[7] = 2
-    for i in range(8, score):
-        dp[i] = dp[i - 3] + dp[i - 2] + dp[i - 7]
+    dp = [0] * (score + 1)
+    dp[0] = 1
+
+    for i in range(score - 1):
+        if i + 2 < score:
+            dp[i + 2] += dp[i]
+        if i + 3 < score:
+            dp[i + 3] += dp[i]
+        if i + 7 < score:
+            dp[i + 7] += dp[i]
 
     print dp
-    return None
+    return dp[score]
 
 def test():
-    assert combinations(12) == None
+    assert combinations(12) == 4
 
 if __name__ == "__main__":
     test()
