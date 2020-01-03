@@ -1,22 +1,21 @@
 
 #!/usr/bin/env python
 
-def chb(tree):
-    if not tree:
-        return 0
-    
-    right = 1 + chb(tree.right) 
-    left = 1 + chb(tree.left)
-
-    if abs(left - right) < 2:
-        return max(left, right)
-    return sys.max_int
-
-def c(tree)
-    if chb(tree) < 2:
-        return True
-    return False
-
+def isBalanced(self, root):
+    """
+    :type root: TreeNode
+    :rtype: bool
+    """
+    def check(root):
+	if root is None:
+	    return 0
+	left  = check(root.left)
+	right = check(root.right)
+	if left == -1 or right == -1 or abs(left - right) > 1:
+	    return -1
+	return 1 + max(left, right)
+	
+    return check(root) != -1
 def test():
     assert 1 == 1
 
