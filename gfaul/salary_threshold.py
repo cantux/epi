@@ -49,26 +49,51 @@ def find_salary_cap(salaries, budget):
     return salaryCap
 
 
+def bin_search(sal, budget):
+    sal.sort()
+
+    def calc(cap):
+        sum = 0
+        for s in sal:
+            sum += min(s, cap)
+        return sum
+
+    lo, hi = 0, sal[-1]
+
+    while lo <= hi:
+        mid = lo + ((hi - lo) // 2)
+        calc_res = calc(mid)
+        if calc_res == budget:
+            return mid
+        elif calc_res > budget:
+            hi = mid
+        else:
+            lo = mid
+
 def test():
     lst = [20, 30, 40, 90, 100]
     print epi(lst, 210)
     print adjust(lst, 210)
     print find_salary_cap(lst, 210)
+    print bin_search(lst, 210)
 
     lst = [20, 30, 40, 90, 100]
     print epi(lst, 10)
     print adjust(lst, 10)
     print find_salary_cap(lst, 10)
+    print bin_search(lst, 10)
 
     lst = [20, 30, 40, 90, 100]
     print epi(lst, 20)
     print adjust(lst, 20)
     print find_salary_cap(lst, 20)
+    print bin_search(lst, 20)
     
     lst = [100, 200, 300, 500]
     print epi(lst, 300)
     print adjust(lst, 300)
     print find_salary_cap(lst, 300)
+    print bin_search(lst, 300)
 
 
 if __name__ == "__main__":
