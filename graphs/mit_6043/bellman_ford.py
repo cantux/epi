@@ -5,6 +5,7 @@ import sys
 # returns all paths from source to other nodes.
 def shortest_weight_path(g, source, target):
     def bellman_ford():
+
         d = {v: sys.maxint for v in g.keys()} # tracker
         pi = {}# predecessors
     

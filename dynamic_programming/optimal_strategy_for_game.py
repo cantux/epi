@@ -12,7 +12,7 @@ def opt_r(arr):
 
         dp[i][j] = max( \
                 min(rec(i + 1, j - 1), rec(i + 2, j)) + arr[i], 
-                min(rec(i, j - 2), rec(i + 1, j - 1))+ arr[i]
+                min(rec(i, j - 2), rec(i + 1, j - 1)) + arr[i]
                 )
 
         return dp[i][j]

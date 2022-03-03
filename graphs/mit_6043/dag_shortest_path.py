@@ -13,26 +13,26 @@ def t_sort(g):
     dfs("x")
     return ret[::-1]
 
-def detect_cycle(g):
-        seen = set()
-        def det(node, parents):
-            if node not in seen and node in g:
-                seen.add(node)
-                parents.add(node)
-                for n in g[node]:
-                    if n[0] in parents:
+def is_cyclic(g):
+    seen = set()
+    def det(node, parents):
+        if node not in seen and node in g:
+            seen.add(node)
+            parents.add(node)
+            for n in g[node]:
+                if n[0] in parents:
+                    return True
+                if n[0] not in seen:
+                    if det(n[0], parents):
                         return True
-                    if n[0] not in seen:
-                        if det(n[0], parents):
-                            return True
-                parents.remove(node)
-                
-            return False
-
-        for (k,v) in g.items():
-            if det(k, set()):
-                return True
+            parents.remove(node)
+            
         return False
+
+    for (k,v) in g.items():
+        if det(k, set()):
+            return True
+    return False
 
 def short(g, s, t):
 # keep a dict of current shortest paths

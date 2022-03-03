@@ -3,26 +3,24 @@ import sys
 import heapq
 
 def dijkstra(g, s, t):
-    q = []
-    d = {k: sys.maxint for k in g.keys()}
+    hq = []
+    dp = {k: sys.maxsize for k in g.keys()}
     p = {}
 
-    d[s] = 0
-    heapq.heappush(q, (0, s))
+    dp[s] = 0
+    heapq.heappush(hq, (0, s))
 
-    while q:
-        last_w, curr_v = heapq.heappop(q)
+    while hq:
+        last_w, curr_v = heapq.heappop(hq)
         for n, n_w in g[curr_v]:
-            cand_w = last_w + n_w # equivalent to d[curr_v] + n_w 
-            print d
-            if cand_w < d[n]:
-                d[n] = cand_w
+            if last_w + n_w < dp[n]:
+                dp[n] = last_w + n_w
                 p[n] = curr_v
-                heapq.heappush(q, (cand_w, n))
+                heapq.heappush(hq, (dp[n], n))
                 
-    print "predecessors: ", p
-    print "delta: ", d
-    return d[t]
+    print("predecessors: " + str(p))
+    print("delta: ", str(dp))
+    return dp[t]
 
 
 def test():

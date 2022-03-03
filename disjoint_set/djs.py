@@ -38,6 +38,7 @@ class DisjointSet:
      
     def __repr__(self):
         return "parent: " + str(self.parent) + "\n" + "rank: " +str(self.rank)
+
 def test():
     djs = DisjointSet(["a", "b"])
     print djs

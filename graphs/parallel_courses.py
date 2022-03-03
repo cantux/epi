@@ -22,27 +22,27 @@ def minimumSemesters(self, N, relations):
     g = {}
     ind = {}
     for i in range(1, N + 1):
-	g[i] = list()
-	ind[i] = 0
+	    g[i] = list()
+	    ind[i] = 0
 	
     for p, c in relations:
-	g[p].append(c)
-	ind[c] += 1
+	    g[p].append(c)
+	    ind[c] += 1
     
     q = deque([])
     for v, indegree in ind.items():
-	if indegree == 0:
-	    q.append((v, 1))
+		if indegree == 0:
+			q.append((v, 1))
     
     count = 0
     max_semestre = 1
     while q:
-	curr_node, curr_semestre = q.popleft()
-	max_semestre = max(max_semestre, curr_semestre)
-	count += 1
-	for child in g[curr_node]:
-	    ind[child] -= 1
-	    if ind[child] == 0:
-		q.append((child, curr_semestre + 1))
+	    curr_node, curr_semestre = q.popleft()
+	    max_semestre = max(max_semestre, curr_semestre)
+	    count += 1
+	    for child in g[curr_node]:
+	        ind[child] -= 1
+	        if ind[child] == 0:
+		    q.append((child, curr_semestre + 1))
 
     return -1 if count != N else max_semestre

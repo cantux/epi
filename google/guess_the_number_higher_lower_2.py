@@ -11,7 +11,7 @@ def getMoneyAmount(self, n):
 	if key not in memo:
 	    min_found = sys.maxsize
 	    for i in range(start, end + 1):
-		min_found = min(min_found, max(rec(start, i - 1), rec(i + 1, end)) + i)
+			m		in_found = min(min_found, max(rec(start, i - 1), rec(i + 1, end)) + i)
 	    memo[key] = min_found
 	return memo[key]
     
