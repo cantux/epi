@@ -13,7 +13,7 @@ def _sort(arr, start, end):
         _sort(arr, pivot + 1, end)
 
 def rand_partition(arr, start, end):
-    piv_idx = random.randint(start, end) 
+    piv_idx = int(random.randint(start, end))
     arr[piv_idx], arr[end] = arr[end], arr[piv_idx]
     return partition(arr, start, end)
 
@@ -37,7 +37,7 @@ def partition(arr, start, end):
     
     return small_ptr
 
-arr = range(10)
+arr = list(range(10))
 print("parted around: {0}".format(rand_partition(arr, 0, len(arr) - 1)))
 print("after part arr is: ", arr)
 sort(arr)

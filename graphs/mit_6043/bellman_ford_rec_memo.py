@@ -29,17 +29,17 @@ def bf_dp(g, s, t):
 # we can do that by constraining the size of the subproblems to number of vertices 
     def find_min(curr_v, k):
         if k == 0 and curr_v == s:
-            print "hit start"
+            print("hit start")
             return 0
         elif k == 0:
-            print "hit cycle"
-            return sys.maxint
+            print("hit cycle")
+            return float('inf')
         if curr_v in d:
-            print "we hit memo: ", d[curr_v]
+            print("we hit memo: " + str(d[curr_v]))
             return d[curr_v]
 #         if curr_v == s: # no need for this since we init delta with s = 0
 #             return 0
-        curr_min = sys.maxint
+        curr_min = float('inf')
         for incoming in rev_g[curr_v]: # all edges to incoming neighbors
             for prev_v in incoming:
 #                 print "prev v: ", prev_v

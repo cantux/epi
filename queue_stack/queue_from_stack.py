@@ -7,7 +7,7 @@ class MyQueue(object):
         while self.entry:
             self.exit.append(self.entry.pop())
        
-    def peek(self):
+    def peak(self):
         if not self.exit:
             self.move_to_exit()
         return self.exit[-1]

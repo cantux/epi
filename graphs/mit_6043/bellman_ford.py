@@ -13,9 +13,9 @@ def shortest_weight_path(g, source, target):
         for _ in range(len(g) - 1):
             for v, neighbors in g.items():
                 for n, w in neighbors:
-#                     print "prev edge: ", d[v] # previous edge path so far
-#                     print "current_edge: ", d[n]
-#                     print "w: ", w
+#                     print("prev edge: " + str(d[v])) # previous edge path so far
+#                     print("current_edge: " + str(d[n]))
+#                     print("w: " +  str(w))
                     if d[n] > d[v] + w:
                         d[n] = d[v] + w
                         pi[n] = v # set neighbor's new predecessor to be the smallest relaxed
@@ -29,8 +29,8 @@ def shortest_weight_path(g, source, target):
         return d, pi
 
     track, predecessors = bellman_ford()
-    print track
-    print predecessors
+    print(track)
+    print(predecessors)
     return track[target]
 
 def test():

@@ -46,14 +46,14 @@ def short(g, s, t):
             slice_point = i
 
     top = top[slice_point:]
-    local_sp = {t: sys.maxint for t in top}
+    local_sp = {t: float('inf') for t in top}
     top.pop()
     local_sp[s] = 0
 
     def relax(u, v):
         local_sp[v] = min(local_sp[v], local_sp[u] + g[u][v])
 
-    print top
+    print(top)
     for u in top:
         for v in g[u].keys():
             relax(u, v)
@@ -82,8 +82,8 @@ def test():
             g[d[0]] = {}
         g[d[0]].update({d[1]: d[2]})
 
-    print "cycle: ", detect_cycle(g)
-    print short(g, "s", "d")
+    print("cycle: " +  str(detect_cycle(g)))
+    print(short(g, "s", "d"))
 
 
 if __name__ == "__main__":

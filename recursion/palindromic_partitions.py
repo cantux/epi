@@ -46,6 +46,9 @@ def fnc(text):
     helper(0, [])
     return ret
 
+def pal_part():
+    pass
+
 def test():
     
     res1 = fnc("aab") 
